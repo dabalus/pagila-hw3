@@ -16,3 +16,4 @@
  * 1. <https://www.postgresqltutorial.com/postgresql-grouping-sets/>
  * 2. <https://www.postgresqltutorial.com/postgresql-cube/>
  */
+select extract(year from rental_date) as year,extract( month from rental_date) as  month,extract(day from rental_date) as day, count(film_id)  from inventory join rental on inventory.inventory_id = rental.inventory_id group by  rollup(year,month,day)  order by year,month, day ;
